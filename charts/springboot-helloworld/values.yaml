@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: dev-sandbox-ecr
-  tag: master-bc93204
+  tag: master
   pullPolicy: IfNotPresent
 
 nameOverride: ""
