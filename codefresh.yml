@@ -27,7 +27,7 @@ steps:
     image: codefresh/cfstep-helm:2.9.1
     environment:
       - CHART_REF=charts/springboot-helloworld
-      - RELEASE_NAME=springboot-helloworld-release1-v1
+      - RELEASE_NAME=${{RELEASE_NAME}}
       - KUBE_CONTEXT=Sandbox-Dev
       - VALUE_image_repository=${{IMAGE_REPOSITORY}}
       - VALUE_image_tag=${{IMAGE_TAG}}
