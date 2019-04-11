@@ -1,5 +1,5 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "springboot-helloworld.fullname" . -}}
+{{- $fullName := include "springboot-helloworld.name" . -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
