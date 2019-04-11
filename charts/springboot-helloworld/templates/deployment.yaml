@@ -19,6 +19,12 @@ spec:
         app.kubernetes.io/name: {{ include "springboot-helloworld.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
+      {{- if .Values.image.pullSecrets }}
+      imagePullSecrets:
+      {{- range $sec := .Values.image.pullSecrets }}
+      - name: {{$sec | quote }}
+      {{- end }}
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"

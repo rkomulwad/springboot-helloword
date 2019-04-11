@@ -5,9 +5,11 @@
 replicaCount: 1
 
 image:
-  repository: dev-sandbox-ecr
-  tag: master
+  # Image details should be provided as env variables in the CD pipeline
+  #repository: dev-sandbox-ecr
+  #tag: master
   pullPolicy: IfNotPresent
+  pullSecrets: []
 
 nameOverride: ""
 fullnameOverride: ""
