@@ -9,7 +9,7 @@ image:
   #repository: dev-sandbox-ecr
   #tag: master
   pullPolicy: IfNotPresent
-  pullSecrets: []
+  #pullSecrets: secret for the image repo
 
 nameOverride: ""
 fullnameOverride: ""

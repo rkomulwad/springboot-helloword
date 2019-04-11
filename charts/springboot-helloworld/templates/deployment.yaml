@@ -21,9 +21,7 @@ spec:
     spec:
       {{- if .Values.image.pullSecrets }}
       imagePullSecrets:
-      {{- range $sec := .Values.image.pullSecrets }}
-      - name: {{$sec | quote }}
-      {{- end }}
+      - name: {{.Values.image.pullSecrets }}
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
