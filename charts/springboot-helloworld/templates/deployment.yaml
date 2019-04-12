@@ -36,13 +36,13 @@ spec:
           livenessProbe:
             httpGet:
               path: /actuator/health
-              port: 8002
+              port: {{ .Values.service.healthPort }}
             initialDelaySeconds: 10
             periodSeconds: 3
           readinessProbe:
             httpGet:
               path: /actuator/health
-              port: 8002
+              port: {{ .Values.service.healthPort }}
             initialDelaySeconds: 10
             periodSeconds: 3
           resources:

@@ -17,6 +17,7 @@ fullnameOverride: ""
 service:
   type: ClusterIP
   port: 8080
+  healthPort: 8002
   #nodePort: 30036
 
 ingress:
