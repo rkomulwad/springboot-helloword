@@ -18,6 +18,8 @@ spec:
       labels:
         app.kubernetes.io/name: {{ include "springboot-helloworld.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
+        app: {{ include "springboot-helloworld.name" . }}
+        version: v1
     spec:
       {{- if .Values.image.pullSecrets }}
       imagePullSecrets:
@@ -33,12 +35,16 @@ spec:
               #protocol: TCP
           livenessProbe:
             httpGet:
-              path: /hello/actuator/health
-              port: http
+              path: /actuator/health
+              port: 8002
+            initialDelaySeconds: 10
+            periodSeconds: 3
           readinessProbe:
             httpGet:
-              path: /hello/actuator/health
-              port: http
+              path: /actuator/health
+              port: 8002
+            initialDelaySeconds: 10
+            periodSeconds: 3
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
