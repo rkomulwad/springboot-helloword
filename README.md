@@ -10,31 +10,31 @@ This project requires Kubernetes, Istio with Helm installed and the Bookinfo app
 
 [Instructions to install Istio using Helm](https://istio.io/docs/setup/kubernetes/install/helm/)
 
->Istio should be configured with mTLS, use the "demo-auth" setup mode
+> Istio should be configured with mTLS, use the "demo-auth" setup mode
 
 [Instructions to deploy the Bookinfo application](https://istio.io/docs/examples/bookinfo/)
 
 > Follow the mTLS instructions
 
-##Compile
+## Compile
 ```
 mvnw clean package
 ```
  
- #Build Docker Image
+## Build Docker Image
  ```
 docker build -t springboot-helloworld .
 ```
 
-#Deploy the application using helm
+## Deploy the application using helm
 ```
 helm install --name springboot-helloworld --set image.repository=springboot-helloworld,image.tag=latest ./charts/springboot-helloworld
 ```
 
-#Access the application
+## Access the application
 http://localhost/hello/
 
-#Undeploy and cleanup
+## Undeploy and cleanup
 ```
 helm del --purge springboot-helloworld
 ```
