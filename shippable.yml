@@ -4,8 +4,10 @@ jdk:
   - openjdk8
 
 env:
-  - AWS_ACCOUNT_URL=232923568814.dkr.ecr.us-east-1.amazonaws.com
-  - IMAGE_REPO=dev-sandbox-ecr
+  global:
+    - AWS_ACCOUNT_URL=232923568814.dkr.ecr.us-east-1.amazonaws.com
+    - IMAGE_REPO=dev-sandbox-ecr
+
 integrations:
   hub:
     - integrationName: aws_ecr_key
