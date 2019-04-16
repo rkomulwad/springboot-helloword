@@ -4,8 +4,8 @@ jdk:
   - openjdk8
 
 env:
-  - DOCKER_ACC=232923568814.dkr.ecr.us-east-1.amazonaws.com/dev-sandbox-ecr
-
+  - AWS_ACCOUNT_URL=232923568814.dkr.ecr.us-east-1.amazonaws.com
+  - IMAGE_REPO=dev-sandbox-ecr
 integrations:
   hub:
     - integrationName: aws_ecr_key
@@ -19,6 +19,6 @@ build:
     - cp -r target/site shippable/testresults
 
   post_ci:
-    - docker build -t $DOCKER_ACC/$DOCKER_REPO:$BRANCH.$BUILD_NUMBER .
-    - docker push $DOCKER_ACC/$DOCKER_REPO:$BRANCH.$BUILD_NUMBER
+    - docker build -t $AWS_ACCOUNT_URL/$IMAGE_REPO:$BRANCH.$BUILD_NUMBER .
+    - docker push $AWS_ACCOUNT_URL/$IMAGE_REPO:$BRANCH.$BUILD_NUMBER
 
