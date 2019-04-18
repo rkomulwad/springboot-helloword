@@ -29,6 +29,6 @@ steps:
       - CHART_REF=charts/springboot-helloworld
       - RELEASE_NAME=${{CF_BRANCH_TAG_NORMALIZED}}
       - KUBE_CONTEXT=${{WA_EKS_CLUSTER_NAME}}
-      - VALUE_image_repository=${{WA_DOCKER_REPO_IMAGE_NAME}}
+      - VALUE_image_repository=${{WA_DOCKER_REPO_URL}}
       - VALUE_image_tag=${{CF_BRANCH_TAG_NORMALIZED}}
       - VALUE_image_pullSecrets=${{WA_IMAGE_PULLSECRETS}}
