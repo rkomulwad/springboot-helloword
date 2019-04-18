@@ -10,7 +10,7 @@ steps:
   BuildingDockerImage:
     title: Building Docker Image
     type: build
-    image_name: dev-sandbox-ecr
+    image_name: ${{WA_DOCKER_REPO_IMAGE_NAME}}
     working_directory: ./
     tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
     dockerfile: Dockerfile
@@ -20,7 +20,7 @@ steps:
     type: push
     candidate: '${{BuildingDockerImage}}'
     tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
-    registry: dev-sandbox-ecr
+    registry: ${{WA_ECR_INTEGRATION_NAME}}
 
   DeployHelmChart:
     title: Deploying Helm Chart
@@ -28,7 +28,7 @@ steps:
     environment:
       - CHART_REF=charts/springboot-helloworld
       - RELEASE_NAME=${{RELEASE_NAME}}
-      - KUBE_CONTEXT=Sandbox-Dev
-      - VALUE_image_repository=${{IMAGE_REPOSITORY}}
-      - VALUE_image_tag=${{IMAGE_TAG}}
-      - VALUE_image_pullSecrets=${{IMAGE_PULLSECRETS}}
+      - KUBE_CONTEXT=${{WA_EKS_CLUSTER_NAME}}
+      - VALUE_image_repository=${{WA_DOCKER_REPO_IMAGE_NAME}}
+      - VALUE_image_tag=${{CF_BRANCH_TAG_NORMALIZED}}
+      - VALUE_image_pullSecrets=${{WA_IMAGE_PULLSECRETS}}
