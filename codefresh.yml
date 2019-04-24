@@ -4,7 +4,6 @@ steps:
   CompileCode:
     title: Compile/Unit test
     image: openjdk:8-jdk-alpine
-    working_directory: ./
     commands:
       - mvnw -Dmaven.repo.local=/codefresh/volume/m2_repository package
 
