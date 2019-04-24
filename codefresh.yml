@@ -3,9 +3,9 @@ steps:
 
   CompileCode:
     title: Compile/Unit test
-    image: openjdk:8-jdk-alpine
+    image: maven:3.5.2-jdk-8-alpine
     commands:
-      - mvnw -Dmaven.repo.local=/codefresh/volume/m2_repository package
+      - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package
 
   BuildingDockerImage:
     title: Building Docker Image
