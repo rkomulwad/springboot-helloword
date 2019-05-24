@@ -38,5 +38,3 @@ http://localhost/hello/
 ```
 helm del --purge springboot-helloworld
 ```
-
-
